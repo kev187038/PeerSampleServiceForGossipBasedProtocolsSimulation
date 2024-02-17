@@ -58,11 +58,14 @@ if env.plot.lower() != "yes" and env.plot.lower() != "no" and env.plot.lower() !
 
 if env.plot.lower() == "yes" or env.plot.lower() == 'y':
 	env.plot = True
-	env.lag = input("Enter the desired value for time lag of simulation graph plotting (10, 30 or 100 are advised): ")
+	env.lag = input("Enter the desired value for time lag of simulation graph plotting (10, 30 or 100 are advised), the value must be between 1 and 100: ")
 	if not env.lag.isdigit():
 		print("Error input")
 		sys.exit(1)
 	else:
+		if(env.lag > 100 or env.lag < 1):
+			print("Error invalid number")
+			sys.exit(1)
 		env.lag = int(env.lag)
 	
 else:
@@ -353,7 +356,7 @@ def is_overlay_connected(env):
 def selfHeal(env):
 	yield env.timeout(300)
 	print("Starting dynamic failure study: 50% of nodes will be eliminated to study the self-healing capacity")
-	#We eliminate 50% of the nodes until we find the first connected graph to study
+	#We repeat the elimination of 50% of the nodes until we find the first connected graph to study
 	num_eliminated = 0
 	while(num_eliminated < len(env.nodeList) // 2):
 		to_delete = random.choice(env.nodeList)
