@@ -1,0 +1,3 @@
+Node Degree dynamic data over 300cycles
+Mean			var			std_dev
+7.485266666666665	0.2848712426303856	0.533733306652663
