@@ -1,5 +1,0 @@
-The underlying peer sampling service. Can be utilized by more gossip protocols. 
-It explains the domain of nodes of the gossip protocol. 
-TWO METHODS :
-	init() : initialized service on a node if this hasn't been done before
-	getPeer() : returns a peer address if the group has more than 1 node as a sample drawn from the group. The specifications of the sample are implemetation dependant. We want independent uniform random sampling. We assume near-uniformity is enough for the application. Trade-off between performance of sampling and quality of sampling.
